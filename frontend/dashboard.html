@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container dashboard-container">
+
+        <h1>Support Ticket Dashboard</h1>
+
+        <div class="filters">
+
+            <select id="filterCategory">
+                <option value="">All Categories</option>
+                <option value="Technical">Technical</option>
+                <option value="Billing">Billing</option>
+                <option value="Shipping">Shipping</option>
+            </select>
+
+            <select id="filterPriority">
+                <option value="">All Priorities</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <select id="filterStatus">
+                <option value="">All Statuses</option>
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="ticketTable"></tbody>
+        </table>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
