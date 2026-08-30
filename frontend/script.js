@@ -1,5 +1,4 @@
-const API_URL = "http://127.0.0.1:5000";
-
+const API_URL = "https://support-ticket-dashboard-1.onrender.com";
 const form = document.getElementById("ticketForm");
 const message = document.getElementById("message");
 
