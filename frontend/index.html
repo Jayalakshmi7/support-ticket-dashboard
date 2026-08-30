@@ -1,54 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit a Support Ticket</title>
+
+    <title>SupportHub | Submit Ticket</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-    <div class="container">
-        <h1>Submit a Support Ticket</h1>
+<body class="customer-page">
 
-        <form id="ticketForm">
+    <div class="customer-wrapper">
 
-            <input
-                type="text"
-                id="name"
-                placeholder="Your name"
-                required
+        <!-- Header -->
+
+        <header class="customer-header">
+
+            <div class="customer-brand">
+
+                <div class="customer-logo">
+                    S
+                </div>
+
+                <div>
+                    <h2>SupportHub</h2>
+                    <span>Customer Support</span>
+                </div>
+
+            </div>
+
+            <a
+                href="dashboard.html"
+                class="dashboard-link"
             >
+                Support Dashboard →
+            </a>
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Your email"
-                required
-            >
+        </header>
 
-            <input
-                type="text"
-                id="subject"
-                placeholder="Subject"
-                required
-            >
 
-            <textarea
-                id="description"
-                placeholder="Describe your issue"
-                required
-            ></textarea>
+        <!-- Main -->
 
-            <button type="submit">Submit Ticket</button>
+        <main class="customer-main">
 
-        </form>
+            <div class="customer-intro">
 
-        <p id="message"></p>
+                <span class="intro-label">
+                    CUSTOMER SUPPORT
+                </span>
 
-        <a href="dashboard.html">View Dashboard →</a>
+                <h1>
+                    How can we help you?
+                </h1>
+
+                <p>
+                    Submit your issue and our support team
+                    will review it as soon as possible.
+                </p>
+
+            </div>
+
+
+            <!-- Form Card -->
+
+            <section class="ticket-form-card">
+
+                <div class="form-card-header">
+
+                    <div>
+
+                        <h2>
+                            Submit a Support Ticket
+                        </h2>
+
+                        <p>
+                            Please provide the details of your issue below.
+                        </p>
+
+                    </div>
+
+                    <div class="form-icon">
+                        ✉
+                    </div>
+
+                </div>
+
+
+                <form id="ticketForm">
+
+
+                    <!-- Name + Email -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Subject -->
+
+                    <div class="form-group">
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            placeholder="Briefly describe your issue"
+                            maxlength="200"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="form-group">
+
+                        <div class="label-row">
+
+                            <label for="description">
+                                Issue Description
+                            </label>
+
+                            <span>
+                                Be as specific as possible
+                            </span>
+
+                        </div>
+
+                        <textarea
+                            id="description"
+                            placeholder="Tell us what happened, when it happened, and any relevant details..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- Info -->
+
+                    <div class="classification-info">
+
+                        <div class="info-icon">
+                            ✦
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Automatic ticket classification
+                            </strong>
+
+                            <p>
+                                Your ticket will automatically be
+                                categorized and prioritized based
+                                on the information you provide.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Submit -->
+
+                    <button
+                        type="submit"
+                        class="submit-ticket-button"
+                    >
+
+                        <span>
+                            Submit Ticket
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <!-- Message -->
+
+                    <div
+                        id="message"
+                        class="ticket-message"
+                    ></div>
+
+                </form>
+
+            </section>
+
+
+            <!-- Footer information -->
+
+            <div class="customer-footer">
+
+                <span>
+                    🔒 Your information is securely stored.
+                </span>
+
+                <span>
+                    SupportHub Ticket Management System
+                </span>
+
+            </div>
+
+        </main>
+
     </div>
 
+
     <script src="script.js"></script>
+
 </body>
+
 </html>

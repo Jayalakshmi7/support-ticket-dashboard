@@ -1,58 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Dashboard</title>
+
+    <title>SupportHub Dashboard</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container dashboard-container">
+    <div class="app">
 
-        <h1>Support Ticket Dashboard</h1>
+        <!-- Sidebar -->
+        <aside class="sidebar">
 
-        <div class="filters">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <div>
+                    <h2>SupportHub</h2>
+                    <span>Ticket Management</span>
+                </div>
+            </div>
 
-            <select id="filterCategory">
-                <option value="">All Categories</option>
-                <option value="Technical">Technical</option>
-                <option value="Billing">Billing</option>
-                <option value="Shipping">Shipping</option>
-            </select>
+            <nav class="navigation">
 
-            <select id="filterPriority">
-                <option value="">All Priorities</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-            </select>
+                <a href="#" class="nav-item active">
+                    <span>▣</span>
+                    Dashboard
+                </a>
 
-            <select id="filterStatus">
-                <option value="">All Statuses</option>
-                <option value="Open">Open</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Resolved">Resolved</option>
-            </select>
+                <a href="#tickets" class="nav-item">
+                    <span>▤</span>
+                    Tickets
+                </a>
 
-        </div>
+                <a href="#analytics" class="nav-item">
+                    <span>◈</span>
+                    Analytics
+                </a>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>Category</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+            </nav>
 
-            <tbody id="ticketTable"></tbody>
-        </table>
+            <div class="sidebar-bottom">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>System Online</strong>
+                        <small>API connected</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div>
+                    <p class="breadcrumb">Workspace / Dashboard</p>
+                    <h1>Support Dashboard</h1>
+                    <p class="subtitle">
+                        Monitor and manage customer support tickets
+                    </p>
+                </div>
+
+                <div class="user-section">
+
+                    <div class="notification">
+                        🔔
+                    </div>
+
+                    <div class="user-info">
+                        <div class="avatar">J</div>
+
+                        <div>
+                            <strong>Support Agent</strong>
+                            <span>Administrator</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Statistics -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon total-icon">
+                        #
+                    </div>
+
+                    <div class="stat-content">
+                        <span>Total Tickets</span>
+                        <strong id="totalTickets">0</strong>
+                        <small>All submitted tickets</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon open-icon">
+                        ○
+                    </div>
+
+                    <div class="stat-content">
+                        <span>Open</span>
+                        <strong id="openTickets">0</strong>
+                        <small>Awaiting action</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon progress-icon">
+                        ◷
+                    </div>
+
+                    <div class="stat-content">
+                        <span>In Progress</span>
+                        <strong id="progressTickets">0</strong>
+                        <small>Currently being handled</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon resolved-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+                        <span>Resolved</span>
+                        <strong id="resolvedTickets">0</strong>
+                        <small>Successfully completed</small>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Analytics -->
+            <section class="analytics-grid" id="analytics">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Tickets by Category</h2>
+                            <p>Distribution across support categories</p>
+                        </div>
+
+                    </div>
+
+                    <div class="category-list">
+
+                        <div class="category-row">
+
+                            <div class="category-label">
+                                <span class="category-dot technical"></span>
+                                Technical
+                            </div>
+
+                            <div class="progress-container">
+                                <div
+                                    class="progress-bar technical-bar"
+                                    id="technicalBar">
+                                </div>
+                            </div>
+
+                            <strong id="technicalCount">0</strong>
+
+                        </div>
+
+
+                        <div class="category-row">
+
+                            <div class="category-label">
+                                <span class="category-dot billing"></span>
+                                Billing
+                            </div>
+
+                            <div class="progress-container">
+                                <div
+                                    class="progress-bar billing-bar"
+                                    id="billingBar">
+                                </div>
+                            </div>
+
+                            <strong id="billingCount">0</strong>
+
+                        </div>
+
+
+                        <div class="category-row">
+
+                            <div class="category-label">
+                                <span class="category-dot shipping"></span>
+                                Shipping
+                            </div>
+
+                            <div class="progress-container">
+                                <div
+                                    class="progress-bar shipping-bar"
+                                    id="shippingBar">
+                                </div>
+                            </div>
+
+                            <strong id="shippingCount">0</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Priority Overview</h2>
+                            <p>Ticket urgency distribution</p>
+                        </div>
+
+                    </div>
+
+                    <div class="priority-overview">
+
+                        <div class="priority-card high">
+                            <span>High</span>
+                            <strong id="highCount">0</strong>
+                            <small>Priority tickets</small>
+                        </div>
+
+                        <div class="priority-card medium">
+                            <span>Medium</span>
+                            <strong id="mediumCount">0</strong>
+                            <small>Priority tickets</small>
+                        </div>
+
+                        <div class="priority-card low">
+                            <span>Low</span>
+                            <strong id="lowCount">0</strong>
+                            <small>Priority tickets</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Tickets -->
+            <section class="tickets-panel" id="tickets">
+
+                <div class="tickets-header">
+
+                    <div>
+                        <h2>Recent Tickets</h2>
+                        <p>View, search and manage incoming support requests</p>
+                    </div>
+
+                </div>
+
+
+                <!-- Search and Filters -->
+                <div class="filter-section">
+
+                    <div class="search-box">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search by customer, email, subject or description..."
+                        >
+
+                    </div>
+
+
+                    <select id="filterCategory">
+
+                        <option value="">All Categories</option>
+
+                        <option value="Technical">
+                            Technical
+                        </option>
+
+                        <option value="Billing">
+                            Billing
+                        </option>
+
+                        <option value="Shipping">
+                            Shipping
+                        </option>
+
+                    </select>
+
+
+                    <select id="filterPriority">
+
+                        <option value="">All Priorities</option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                    </select>
+
+
+                    <select id="filterStatus">
+
+                        <option value="">All Statuses</option>
+
+                        <option value="Open">
+                            Open
+                        </option>
+
+                        <option value="In Progress">
+                            In Progress
+                        </option>
+
+                        <option value="Resolved">
+                            Resolved
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Table -->
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Customer</th>
+                                <th>Subject</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="ticketTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
 
     </div>
 
+
+    <!-- Ticket Details Modal -->
+    <div
+        class="modal-overlay"
+        id="ticketModal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="modal-label">Ticket Details</span>
+                    <h2 id="modalSubject">Ticket</h2>
+                </div>
+
+                <button
+                    class="close-button"
+                    onclick="closeTicketModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="details-grid">
+
+                    <div>
+                        <span>Customer</span>
+                        <strong id="modalName">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        <strong id="modalEmail">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Category</span>
+                        <strong id="modalCategory">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Priority</span>
+                        <strong id="modalPriority">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Status</span>
+                        <strong id="modalStatus">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Created</span>
+                        <strong id="modalDate">-</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="description-box">
+
+                    <span>Description</span>
+
+                    <p id="modalDescription">
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
     <script src="dashboard.js"></script>
+
 </body>
+
 </html>
